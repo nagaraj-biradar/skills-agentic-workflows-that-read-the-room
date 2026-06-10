@@ -2,21 +2,22 @@
 name: update-github-info
 description: Draft website updates for Mona's GitHub Info site from official GitHub sources.
 on:
-workflow_dispatch:
-schedule:
-   - cron: '17 9 * * *'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 9 * * *'
 safe-outputs:
-create-pull-request:
-   title-prefix: "[mona] "
-   draft: true
-   fallback-as-issue: false
+  create-pull-request:
+    title-prefix: "[mona] "
+    draft: true
+    fallback-as-issue: false
 tools:
-edit:
-web-fetch:
+  edit:
+  web-fetch:
 network:
-allowed:
-   - github.com
-   - github.blog
+  allowed:
+    - github.com
+    - github.blog
+    - awesome-copilot.github.com
 ---
 
 # Update Mona's GitHub Info website
@@ -27,6 +28,10 @@ Use these sources:
 - `notes/mona-notes.md`
 - GitHub Blog: https://github.blog/latest/
 - GitHub Changelog: https://github.blog/changelog/
+- Awesome Copilot workflows: https://awesome-copilot.github.com/workflows/
+
+Web fetch https://awesome-copilot.github.com/workflows/ and use those workflow ideas
+as additional source context when updating `site/content/github-info.md`.
 
 Update `site/content/github-info.md` with concise,
 practical updates for readers and include source context when content comes
