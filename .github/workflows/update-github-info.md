@@ -1,37 +1,38 @@
 ---
 name: update-github-info
-description: Draft Mona website updates for GitHub info using the GitHub Blog and changelog, then open a pull request for review.
+description: Draft website updates for Mona's GitHub Info site from official GitHub sources.
 on:
-  workflow_dispatch: {}
-  schedule:
-     - cron: '17 9 * * *'
-permissions:
-  contents: read
+workflow_dispatch:
+schedule:
+   - cron: '17 9 * * *'
 safe-outputs:
-  create-pull-request:
-    title-prefix: "[Mona] "
-    draft: true
-    fallback-as-issue: false
+create-pull-request:
+   title-prefix: "[mona] "
+   draft: true
+   fallback-as-issue: false
 tools:
-  edit: null
-  web-fetch: null
+edit:
+web-fetch:
 network:
-  allowed:
-    - github.blog
-    - github.com
+allowed:
+   - github.com
+   - github.blog
 ---
 
-# Update GitHub Info content from GitHub sources
+# Update Mona's GitHub Info website
 
-Read `notes/mona-notes.md` and use it as context for updates.
+Read `notes/mona-notes.md` before making changes.
 
-Fetch these official GitHub sources:
-- https://github.blog/latest/
-- https://github.blog/changelog/
+Use these sources:
+- `notes/mona-notes.md`
+- GitHub Blog: https://github.blog/latest/
+- GitHub Changelog: https://github.blog/changelog/
 
-Update `site/content/github-info.md` with concise, reader-focused GitHub information.
-When the agent makes changes, it should prepare those changes as a pull request
-for Mona to review instead of writing directly to `main`.
+Update `site/content/github-info.md` with concise,
+practical updates for readers and include source context when content comes
+from the GitHub Blog or GitHub Changelog.
 
-Use `safe-outputs` with `create-pull-request` so the agent can draft content
-updates and open a pull request safely.
+Open a pull request for Mona to review. 
+Use a pull request title that mentions Mona or GitHub Info. 
+Do not write directly to `main`;
+rely on `safe-outputs` with `create-pull-request`.
